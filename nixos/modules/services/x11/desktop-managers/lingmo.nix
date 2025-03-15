@@ -4,7 +4,7 @@ with lib;
 
 let
   xcfg = config.services.xserver;
-  cfg = xcfg.desktopManager.cutefish;
+  cfg = xcfg.desktopManager.lingmo;
 
 in
 
