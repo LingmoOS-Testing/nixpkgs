@@ -615,6 +615,7 @@ in {
   lighttpd = handleTest ./lighttpd.nix {};
   limesurvey = handleTest ./limesurvey.nix {};
   limine = import ./limine { inherit runTest; };
+  lingmo = handleTest ./lingmo.nix {};
   listmonk = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./listmonk.nix {};
   litestream = handleTest ./litestream.nix {};
   lldap = handleTest ./lldap.nix {};
