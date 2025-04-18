@@ -1,16 +1,12 @@
 { lib, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} }:
 
-let
-  name = "filemanager";
-  version = "0.8.1";
-in
 
-pkgs.stdenv.mkDerivation rec {
-  inherit version;
-  name = "lingmo-${name}";
-
-  src = fetchFromLingmoGitHub {
-    inherit name version;
+  stdenv.mkDerivation rec {
+    name = "lingmo-filemanager-${version}";
+    version = "0.8.1";
+    owner = "LingmoOS";
+    repo = "lingmo-filemanager";
+    rev = "refs/tags/v${version}";
     sha256 = "0a12cddik4dkjzr1n2yavmys9j0ji1pyxiks8syvll90dyikm2sj";
   };
 

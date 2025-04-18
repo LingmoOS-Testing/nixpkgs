@@ -1,15 +1,12 @@
-{ lib, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} }:
+{ lib, stdenv, pkgs ? import <nixpkgs> {} }:
 
-let
-  name = "screenlocker";
-  version = "2.0.2";
-in
 
-pkgs.stdenv.mkDerivation rec {
-  pname = "lingmo-${name}";
-
-  src = fetchFromLingmoGitHub {
-    inherit name version;
+  stdenv.mkDerivation rec {
+    name = "lingmo-screenlocker-${version}";
+    version = "2.0.2";
+    owner = "LingmoOS";
+    repo = "lingmo-screenlocker";
+    rev = "refs/tags/v${version}";
     sha256 = "1nb26lrmspn522r7hwghk5za9h0rl2bcds8n8ayfnmpvx73vr4b5";
   };
 

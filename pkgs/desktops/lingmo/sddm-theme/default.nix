@@ -1,17 +1,12 @@
-{ lib, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} }:
+{ lib, stdenv, pkgs ? import <nixpkgs> {} }:
 
-let
-  name = "sddm-theme";
-  version = "2.7.0";
-in
 
-pkgs.stdenv.mkDerivation rec {
-  inherit version;
-  pname = "lingmo-${name}";
-
-  src = fetchFromGitHub {
-    owner = "LingmoOS"
-    inherit name version;
+  stdenv.mkDerivation rec {
+    name = "lingmo-sddm-theme-${version}";
+    version = "2.7.0";
+    owner = "LingmoOS";
+    repo = "lingmo-sddm-theme";
+    rev = "refs/tags/v${version}";
     sha256 = "1b8x023hi86r8haw9spk48gxkafcs214cp9wa84ck2kx2g08kswa";
   };
 

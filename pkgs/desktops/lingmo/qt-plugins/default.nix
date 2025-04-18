@@ -1,16 +1,12 @@
 { lib, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} }:
 
-let
-  name = "qt-plugins";
-  version = "2.0.1";
-in
 
-pkgs.stdenv.mkDerivation rec {
-  inherit version;
-  name = "lingmo-${name}";
-
-  src = fetchFromLingmoGitHub {
-    inherit name version;
+  stdenv.mkDerivation rec {
+    name = "lingmo-qt-plugins-${version}";
+    version = "2.0.2";
+    owner = "LingmoOS";
+    repo = "lingmo-core";
+    rev = "refs/tags/v${version}";
     sha256 = "0kbmqf3knxn5gqdkmarj7vrynjp5cyh7p3ibrgvdl8sdldzdjfi3";
   };
 

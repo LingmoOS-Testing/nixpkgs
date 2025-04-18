@@ -1,16 +1,12 @@
-{ lib, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} }:
+{ lib, stdenv, pkgs ? import <nixpkgs> {} }:
 
-let
-  name = "videoplayer";
-  version = "2.0.1";
-in
 
-pkgs.stdenv.mkDerivation rec {
-  inherit version;
-  name = "lingmo-${name}";
-
-  src = fetchFromLingmoGitHub {
-    inherit name version;
+  stdenv.mkDerivation rec {
+    name = "lingmo-videoplayer-${version}";
+    version = "2.0.1";
+    owner = "LingmoOS";
+    repo = "lingmo-videoplayer";
+    rev = "refs/tags/v${version}";
     sha256 = "1gw784bqsvxidn8wlxylpg84bjbh5flpzsnmqrxn321x6vihya93";
   };
 

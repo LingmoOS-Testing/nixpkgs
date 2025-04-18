@@ -1,16 +1,11 @@
-{ lib, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} }:
+{ lib, stdenv, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} } :
 
-let
-  name = "core";
-  version = "2.0.2";
-in
-
-pkgs.stdenv.mkDerivation rec {
-  inherit version;
-  name = "lingmo-${name}";
-
-  src = fetchFromLingmoGitHub {
-    inherit name version;
+  stdenv.mkDerivation rec {
+    name = "lingmo-core-${version}";
+    version = "2.0.2";
+    owner = "LingmoOS";
+    repo = "lingmo-core";
+    rev = "refs/tags/v${version}";
     sha256 = "0v65zhm59xli70xgif3yrynqmmjy77dcsz4f975ggxa3ylj77p2g";
   };
 

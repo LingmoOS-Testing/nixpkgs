@@ -1,16 +1,12 @@
-{ lib, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} }:
+{ lib, stdenv, pkgs ? import <nixpkgs> {} }:
 
-let
-  name = "kwin-plugins";
-  version = "1.2.4";
-in
 
-pkgs.stdenv.mkDerivation rec {
-  inherit version;
-  name = "lingmo-${name}";
-
-  src = fetchFromLingmoGitHub {
-    inherit name version;
+  stdenv.mkDerivation rec {
+    name = "lingmo-kwin-plugins-${version}";
+    version = "1.2.4";
+    owner = "LingmoOS";
+    repo = "lingmo-kwin-plugins";
+    rev = "refs/tags/v${version}";
     sha256 = "0mph04qc24rjz5pdv20kfzfcj9q7w3j560b5x1q2cx69ddw81v7p";
   };
 
