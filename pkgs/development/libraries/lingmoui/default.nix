@@ -1,22 +1,28 @@
-{ lib, fetchFromLingmoGitHub, pkgs ? import <nixpkgs> {} }:
+{ lib, 
+  stdenv, 
+  fetchFromGitHub, 
+  pkgs ? import <nixpkgs> {} }:
 
-let
-  name = "LingmoUI";
+stdenv.mkDerivation rec {
+  pname = "LingmoUI";
   version = "3.1.1";
-in
 
-pkgs.stdenv.mkDerivation rec {
-  inherit version;
-  pname = "lingmo-${name}";
-
-  src = fetchFromLingmoGitHub {
-    inherit name version;
+  src = fetchFromGitHub {
+    owner = "LingmoOS";
+    repo = "LingmoUI";
+    rev = version;
     sha256 = "1gjkd6yy6m69gcqf6vypds99j039x2bjxjyjz54qpcm3b4w3rgj8";
   };
 
   buildInputs = with pkgs; [
-    qt5-quickcontrols2 qt5-x11extras kwindowsystem5
-    cmake extra-cmake-modules make gcc pkgconf
+    qt5-quickcontrols2
+    qt5-x11extras
+    kwindowsystem5
+    cmake
+    extra-cmake-modules
+    make
+    gcc
+    pkgconf
   ];
 
   buildPhase = ''
@@ -34,7 +40,7 @@ pkgs.stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "LingmoUI is a GUI library based on QQC2 (Qt Quick Controls 2), every Lingmo application uses it.";
-    homepage = "https://lingmo.org/";
+    homepage = "https://github.com/lingmoos/LingmoUI";
     license = licenses.gpl3;
     platforms = platforms.linux;
     maintainers = with maintainers; [ arkimium_76 ];

@@ -1,47 +1,46 @@
-{ lib, fetchFromGitHub, pkgs ? import <nixpkgs> {} }:
-
-let
-  name = "calculator";
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  pkgs ? import <nixpkgs> {},
+}:
+stdenv.mkDerivation rec {
+  pname = "lingmo-calculator";
   version = "0.6.3";
-in
-
-pkgs.stdenv.mkDerivation rec {
-  name = "lingmo-${name}";
 
   src = fetchFromGitHub {
-    owner = "LingmoOS"
-    inherit name version;
+    owner = "LingmoOS";
+    repo = "lingmo-calculator";
+    rev = version;
     sha256 = "18r4wpd7467rspdbnkvzsq87gd09jxxjl5ifwvnp8j41lx9s8lmz";
   };
 
   buildInputs = with pkgs; [
-    qt5-tools qt5-quickcontrols2 cmake extra-cmake-modules
-    make gcc pkgconf
+    qt5-tools
+    qt5-quickcontrols2
+    cmake
+    extra-cmake-modules
+    make
+    gcc
+    pkgconf
   ];
 
-  phases = [ "unpack" "build" "install" ];
-  
-  unpack = pkgs.runCommand "unpack-source" {} ''
-      mkdir -p $out
-      unzip -d $out $src
-      cd $out/lingmo-${name}-${version}
-      mkdir build
-    '';
+  buildPhase = ''
+    echo "Compiling $pkgname"
+    mkdir -pv $out/build && cd $out/build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    make -j$(nproc) || return 1
+  '';
 
-  build = pkgs.runCommand "build" {} ''
-      cd $out/lingmo-${name}-${version}/build
-      cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-      make -j$(nproc)
-    '';
-
-  install = pkgs.runCommand "install" {} ''
-      cd $out/lingmo-${name}-${version}/build
-      make DESTDIR=$out install
-    '';
+  installPhase = ''
+    mkdir -pv $out
+    cd $out/build
+    make DESTDIR=$out install
+  '';
 
   meta = with lib; {
     description = "LingmoOS - Calculator";
-    homepage = "https://lingmo.org/";
+    homepage = "https://github.com/lingmoos/lingmo-calculator";
     license = licenses.gpl3;
     platforms = platforms.linux;
     maintainers = with maintainers; [ arkimium_76 ];

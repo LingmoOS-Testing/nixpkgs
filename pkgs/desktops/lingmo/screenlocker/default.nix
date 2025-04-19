@@ -1,21 +1,31 @@
-{ lib, stdenv, pkgs ? import <nixpkgs> {} }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  pkgs ? import <nixpkgs> { },
+}:
 
+stdenv.mkDerivation rec {
+  pname = "lingmo-screenlocker";
+  version = "2.0.2";
 
-  stdenv.mkDerivation rec {
-    name = "lingmo-screenlocker-${version}";
-    version = "2.0.2";
+  src = fetchFromGitHub {
     owner = "LingmoOS";
     repo = "lingmo-screenlocker";
-    rev = "refs/tags/v${version}";
+    rev = version;
     sha256 = "1nb26lrmspn522r7hwghk5za9h0rl2bcds8n8ayfnmpvx73vr4b5";
   };
 
   buildInputs = with pkgs; [
-    cmake extra-cmake-modules make gcc pkgconf
+    cmake
+    extra-cmake-modules
+    make
+    gcc
+    pkgconf
   ];
 
   buildPhase = ''
-    echo "Compiling ${pname}"
+    echo "Compiling $pkgname"
     mkdir -pv $out/build && cd $out/build
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     make -j$(nproc) || return 1
@@ -29,7 +39,7 @@
 
   meta = with lib; {
     description = "LingmoOS - Screenlocker";
-    homepage = "https://lingmo.org/";
+    homepage = "https://github.com/lingmoos/lingmo-screenlocker";
     license = licenses.gpl3;
     platforms = platforms.linux;
     maintainers = with maintainers; [ arkimium_76 ];

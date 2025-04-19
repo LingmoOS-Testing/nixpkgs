@@ -20,7 +20,6 @@ makeScope libsForQt5.newScope (self: with self; {
   dock = callPackage ./dock { };
   filemanager = callPackage ./filemanager { };
   lingmoui = callPackage ../../development/libraries/lingmo/lingmoui { };
-  icons = callPackage ./icons { };
   kwin-plugins = callPackage ./kwin-plugins { };
   launcher = callPackage ./launcher { };
   liblingmo = callPackage ../../development/libraries/lingmo/liblingmo { };
