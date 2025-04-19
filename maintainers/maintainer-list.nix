@@ -1951,17 +1951,17 @@
     githubId = 62168569;
     name = "arjix";
   };
-  arkivm = {
-    email = "vikram186@gmail.com";
-    github = "arkivm";
-    githubId = 1118815;
-    name = "Vikram Narayanan";
-  };
   arkimium_76 = {
     email = "2241853439@qq.com";
     github = "arkimium";
     githubId = "114994536";
     name = "Lycaon Constantine Cayde";
+  };
+  arkivm = {
+    email = "vikram186@gmail.com";
+    github = "arkivm";
+    githubId = 1118815;
+    name = "Vikram Narayanan";
   };
   armeenm = {
     email = "mahdianarmeen@gmail.com";
