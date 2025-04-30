@@ -1,8 +1,9 @@
-{ lib, 
-  stdenv, 
-  fetchFromGitHub, 
-  pkgs ? import <nixpkgs> {} }:
-
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  pkgs ? import <nixpkgs> {},
+}:
 stdenv.mkDerivation rec {
   pname = "LingmoUI";
   version = "3.1.1";
@@ -43,6 +44,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/lingmoos/LingmoUI";
     license = licenses.gpl3;
     platforms = platforms.linux;
-    maintainers = with maintainers; [ arkimium_76 ];
+    maintainers = with maintainers; [arkimium_76];
   };
 }

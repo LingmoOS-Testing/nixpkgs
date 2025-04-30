@@ -1952,9 +1952,9 @@
     name = "arjix";
   };
   arkimium_76 = {
-    email = "2241853439@qq.com";
+    email = "kamialef2345@gmail.com";
     github = "arkimium";
-    githubId = "114994536";
+    githubId = 114994536;
     name = "Lycaon Constantine Cayde";
   };
   arkivm = {
