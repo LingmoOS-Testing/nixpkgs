@@ -1,13 +1,9 @@
-import ./make-test-python.nix ({ pkgs, ... } :
-
-{
+import ./make-test-python.nix ({pkgs, ...}: {
   name = "lingmo";
-  meta = with pkgs.lib.maintainers; [ arkimium_76 ];
+  meta = with pkgs.lib.maintainers; [arkimium_76];
 
-  machine = { ... }:
-
-  {
-    imports = [ ./common/user-account.nix ];
+  machine = {...}: {
+    imports = [./common/user-account.nix];
     services.xserver.enable = true;
     services.xserver.displayManager.sddm.enable = true;
     services.xserver.displayManager.defaultSession = "lingmo-session";
@@ -21,7 +17,7 @@ import ./make-test-python.nix ({ pkgs, ... } :
 
   enableOCR = true;
 
-  testScript = { nodes, ... }: let
+  testScript = {nodes, ...}: let
     user = nodes.machine.config.users.users.alice;
     userCommand = "su - ${user.name} -c 'DISPLAY=:0.0 XDG_RUNTIME_DIR=/run/user/${toString user.uid}'";
   in ''
