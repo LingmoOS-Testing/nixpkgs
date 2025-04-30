@@ -19,7 +19,7 @@ in
   imports = [
     ./none.nix ./xterm.nix ./phosh.nix ./xfce.nix ./plasma5.nix ../../desktop-managers/plasma6.nix ./lumina.nix
     ./lxqt.nix ./enlightenment.nix ./gnome.nix ./retroarch.nix ./kodi.nix
-    ./mate.nix ./pantheon.nix ./surf-display.nix ./cde.nix
+    ./mate.nix ./pantheon.nix ./surf-display.nix ./cde.nix ./lingmo.nix
     ./cinnamon.nix ./budgie.nix ./deepin.nix ../../desktop-managers/lomiri.nix
   ];
 

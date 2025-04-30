@@ -1951,6 +1951,12 @@
     githubId = 62168569;
     name = "arjix";
   };
+  arkimium_76 = {
+    email = "kamialef2345@gmail.com";
+    github = "arkimium";
+    githubId = 114994536;
+    name = "Lycaon Constantine Cayde";
+  };
   arkivm = {
     email = "vikram186@gmail.com";
     github = "arkivm";
